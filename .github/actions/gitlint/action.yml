@@ -31,9 +31,11 @@ runs:
       git config --global --add safe.directory /github/workspace && \
       git fetch origin +refs/heads/main:refs/remotes/origin/main && \
       git fetch origin +refs/pull/${{ inputs.pr-number }}/head && \
-      if ! gitlint --commits ${{ inputs.base-branch }}..HEAD; then \
+      # Fetch the upstream .gitlint config from eclipse-score/score
+      git clone --depth 1 https://github.com/eclipse-score/score.git /tmp/score-gitlint && \
+      if ! gitlint --config /tmp/score-gitlint/.gitlint --commits origin/main..HEAD; then \
         echo -e "\nWARNING: Your commit message does not follow the required format." && \
-        echo "Formatting rules: https://eclipse-score.github.io/score/process/guidance/git/index.html" && \
+        echo "Formatting rules: https://eclipse-score.github.io/score/main/contribute/general/git.html#commit-message-format" && \
         echo -e "To fix your commit message, run:\n" && \
         echo " git commit --amend" && \
         echo "Then update your commit (fix gitlint warnings). Finally, force-push:" && \
