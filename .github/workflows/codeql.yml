@@ -48,7 +48,7 @@ jobs:
     - if: matrix.build-mode == 'manual'
       shell: bash
       run: |
-        bazel build //main:main
+        bazel build //src/examples:example-app
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3        
