@@ -2,5 +2,9 @@
   {
     "version": "main",
     "url": "https://eclipse-score.github.io/inc_daal/main/"
+  },
+  {
+    "version": "pr-2",
+    "url": "https://eclipse-score.github.io/inc_daal/pr-2/"
   }
 ]
