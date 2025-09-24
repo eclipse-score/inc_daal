@@ -1,0 +1,8 @@
+--- a/MODULE.bazel
++++ b/MODULE.bazel
+@@ -82,3 +82,5 @@ git_override(
+     remote = "git@github.com:eclipse-score/baselibs.git",
+     commit = "d837b9452a717e93522dc1f8bc858f72ab67c314",
+ )
++
++bazel_dep(name = "platforms", version = "0.0.11")

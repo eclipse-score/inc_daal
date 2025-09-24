@@ -54,3 +54,5 @@ styles/
 .venv
 __pycache__/
 /.coverage
+
+.clwb/

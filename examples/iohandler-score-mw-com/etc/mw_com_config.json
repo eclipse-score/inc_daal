@@ -1,0 +1,67 @@
+{
+  "serviceTypes": [
+    {
+      "serviceTypeName": "/score/vss/steering/request",
+      "version": {
+        "major": 1,
+        "minor": 0
+      },
+      "bindings": [
+        {
+          "binding": "SHM",
+          "serviceId": 1234,
+          "events": [
+            {
+              "eventName": "steering_request",
+              "eventId": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "serviceInstances": [
+    {
+      "instanceSpecifier": "/score/vss/steering/front_request",
+      "serviceTypeName": "/score/vss/steering/request",
+      "version": {
+        "major": 1,
+        "minor": 0
+      },
+      "instances": [
+        {
+          "instanceId": 1,
+          "allowedConsumer": {
+            "QM": [
+              4002
+            ]
+          },
+          "allowedProvider": {
+            "QM": [
+              4001
+            ]
+          },
+          "asil-level": "QM",
+          "binding": "SHM",
+          "events": [
+            {
+              "eventName": "steering_request",
+              "numberOfSampleSlots": 10,
+              "maxSubscribers": 3,
+              "numberOfIpcTracingSlots": 10
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "global": {
+        "asil-level": "QM",
+        "queue-size": {
+            "QM-receiver": 8,
+            "B-receiver": 5,
+            "B-sender": 12
+        },
+        "shm-size-calc-mode": "SIMULATION"
+    }
+}
