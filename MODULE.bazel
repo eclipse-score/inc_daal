@@ -31,6 +31,7 @@ bazel_dep(name = "googletest", version = "1.14.0")
 
 # Rust rules for Bazel
 bazel_dep(name = "rules_rust", version = "0.56.0")
+bazel_dep(name = "bazel_skylib", version="1.8.1")
 
 # Checker rule for CopyRight checks/fixs
 bazel_dep(name = "score_cr_checker", version = "0.3.1")
