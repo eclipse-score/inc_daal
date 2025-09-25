@@ -71,14 +71,13 @@ bazel_dep(name = "fmt", version = "11.2.0.bcr.1")
 # for score mw::com & mw::log
 bazel_dep(name = "platforms", version = "0.0.11")
 bazel_dep(name = "score-baselibs", version = "1.3.0")
-bazel_dep(name = "communication", version="0.0.0")
-
+bazel_dep(name = "communication", version = "0.0.0")
 git_override(
-    module_name="communication",
+    module_name = "communication",
     commit = "e75629cfd20eca1fa093316afa0c1a1d299b9994",
-    remote = "https://github.com/eclipse-score/communication.git",
-    patches = ["//bazel:patches/communication_add_platforms.patch"],
     patch_strip = 1,
+    patches = ["//bazel:patches/communication_add_platforms.patch"],
+    remote = "https://github.com/eclipse-score/communication.git",
 )
 
 git_override(
