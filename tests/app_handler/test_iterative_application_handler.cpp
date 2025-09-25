@@ -1,9 +1,3 @@
-#include <gmock/gmock.h>
-#include <gtest/gtest.h>
-
-#include "daal/af/app_base/safe_application_base.hpp"
-#include "daal/af/app_handler/details/iterative_application_handler.hpp"
-
 /********************************************************************************
 * Copyright (c) 2025 Contributors to the Eclipse Foundation
 *
@@ -16,6 +10,12 @@
 *
 * SPDX-License-Identifier: Apache-2.0
 ********************************************************************************/
+
+#include <gmock/gmock.h>
+#include <gtest/gtest.h>
+
+#include "daal/af/app_base/safe_application_base.hpp"
+#include "daal/af/app_handler/details/iterative_application_handler.hpp"
 
 // Mock class for daal::af::app_base::SafeApplicationBase
 class MockSafeApplicationBase : public daal::af::app_base::SafeApplicationBase {
