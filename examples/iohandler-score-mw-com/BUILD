@@ -11,41 +11,41 @@ cc_library(
 cc_library(
     name = "adas_vehicle_control_io",
     hdrs = [
-        "adas-vehicle-control/io/vehicle_control_io_container.hpp",
         "adas-vehicle-control/io/steering_wheel_client.hpp",
+        "adas-vehicle-control/io/vehicle_control_io_container.hpp",
         "spec/impl/score_mw_com.hpp",
     ],
     includes = ["adas-vehicle-control"],
     deps = [
+        "score_vss_steering_client",
         "//examples:daal_score_mw_com",
         "//src:daal_iohandler",
-        "score_vss_steering_client",
-    ]
+    ],
 )
 
 cc_library(
     name = "adas_vehicle_control_io_impl_score",
-    hdrs = [
-        "adas-vehicle-control/io/impl/steering_wheel_client_score.hpp",
-    ],
     srcs = [
         "adas-vehicle-control/io/impl/steering_wheel_client_score.cpp",
+    ],
+    hdrs = [
+        "adas-vehicle-control/io/impl/steering_wheel_client_score.hpp",
     ],
     includes = ["adas-vehicle-control"],
     deps = [
         "adas_vehicle_control_io",
-        "//examples:daal_score_mw_com",
         "score_vss_steering_client",
-    ]
+        "//examples:daal_score_mw_com",
+    ],
 )
 
 cc_library(
     name = "adas_vehicle_control_app",
-    hdrs = [
-        "adas-vehicle-control/vehicle_control_app.hpp",
-    ],
     srcs = [
         "adas-vehicle-control/vehicle_control_app.cpp",
+    ],
+    hdrs = [
+        "adas-vehicle-control/vehicle_control_app.hpp",
     ],
     deps = [
         "adas_vehicle_control_io",
@@ -58,19 +58,19 @@ cc_binary(
     srcs = [
         "adas-vehicle-control/main_vehicle_control_app.cpp",
     ],
+    data = ["etc/mw_com_config.json"],
     deps = [
-        "//src:daal_logger",
+        "adas_vehicle_control_app",
+        "adas_vehicle_control_io_impl_score",
+        "score_vss_steering_client",  # TODO: remove
+        "//src:daal_app_executor_builder",
         "//src:daal_app_handler_singleshot",
         "//src:daal_checkpoint",
-        "//src:dummy_execution_environment",
-        "//src:daal_app_executor_builder",
+        "//src:daal_logger",
         "//src:daal_os_helper",
         "//src:daal_trigger",
-        "score_vss_steering_client", # TODO: remove
-        "adas_vehicle_control_io_impl_score",
-        "adas_vehicle_control_app",
+        "//src:dummy_execution_environment",
     ],
-    data = ["etc/mw_com_config.json"],
 )
 
 cc_library(
@@ -82,45 +82,48 @@ cc_library(
     includes = ["steering-wheel"],
     deps = [
         "//src:daal_iohandler",
-    ]
+    ],
 )
 
 cc_library(
     name = "steering_wheel_io_impl_score",
-    hdrs = [
-        "steering-wheel/io/impl/steering_wheel_server_score.hpp",
-        "spec/impl/score_mw_com.hpp",
-    ],
     srcs = [
         "steering-wheel/io/impl/steering_wheel_server_score.cpp",
     ],
-    includes = ["steering-wheel", "."],
+    hdrs = [
+        "spec/impl/score_mw_com.hpp",
+        "steering-wheel/io/impl/steering_wheel_server_score.hpp",
+    ],
+    includes = [
+        ".",
+        "steering-wheel",
+    ],
     deps = [
+        "score_vss_steering_client",
         "steering_wheel_io",
         "//examples:daal_score_mw_com",
-        "score_vss_steering_client",
-    ]
+    ],
 )
 
 cc_binary(
     name = "steering_wheel",
     srcs = [
+        "steering-wheel/main_steering_wheel_app.cpp",
         "steering-wheel/steering_wheel_app.cpp",
         "steering-wheel/steering_wheel_app.hpp",
-        "steering-wheel/main_steering_wheel_app.cpp",
-    ],
-    deps = [
-        "//src:daal_logger",
-        "//src:daal_app_handler_singleshot",
-        "//src:daal_checkpoint",
-        "//src:dummy_execution_environment",
-        "//src:daal_app_executor_builder",
-        "//src:daal_os_helper",
-        "//src:daal_trigger",
-        "steering_wheel_io_impl_score"
     ],
     data = ["etc/mw_com_config.json"],
     visibility = ["//visibility:public"],
+    deps = [
+        "steering_wheel_io_impl_score",
+        "//src:daal_app_executor_builder",
+        "//src:daal_app_handler_singleshot",
+        "//src:daal_checkpoint",
+        "//src:daal_logger",
+        "//src:daal_os_helper",
+        "//src:daal_trigger",
+        "//src:dummy_execution_environment",
+    ],
 )
 
 ## Stub executables ##
@@ -128,22 +131,22 @@ cc_binary(
 cc_binary(
     name = "stub_adas_vehicle_control",
     srcs = [
-        "adas-vehicle-control/vehicle_control_app.cpp",
-        "adas-vehicle-control/vehicle_control_app.hpp",
         "adas-vehicle-control/test/main_vehicle_control_stub.cpp",
         "adas-vehicle-control/test/steering_wheel_client_stub.hpp",
-    ],
-    deps = [
-        "//src:daal_logger",
-        "//src:daal_app_handler_singleshot",
-        "//src:daal_checkpoint",
-        "//src:dummy_execution_environment",
-        "//src:daal_app_executor_builder",
-        "//src:daal_os_helper",
-        "//src:daal_trigger",
-        "score_vss_steering_client",
-        "adas_vehicle_control_io",
+        "adas-vehicle-control/vehicle_control_app.cpp",
+        "adas-vehicle-control/vehicle_control_app.hpp",
     ],
     data = ["etc/mw_com_config.json"],
     visibility = ["//visibility:public"],
+    deps = [
+        "adas_vehicle_control_io",
+        "score_vss_steering_client",
+        "//src:daal_app_executor_builder",
+        "//src:daal_app_handler_singleshot",
+        "//src:daal_checkpoint",
+        "//src:daal_logger",
+        "//src:daal_os_helper",
+        "//src:daal_trigger",
+        "//src:dummy_execution_environment",
+    ],
 )

@@ -1,4 +1,4 @@
-#*******************************************************************************
+# *******************************************************************************
 # Copyright (c) 2025 Contributors to the Eclipse Foundation
 #
 # See the NOTICE file(s) distributed with this work for additional
@@ -9,7 +9,7 @@
 # https://www.apache.org/licenses/LICENSE-2.0
 #
 # SPDX-License-Identifier: Apache-2.0
-#*******************************************************************************
+# *******************************************************************************
 
 cc_test(
     name = "test_application_handler_simple",
@@ -25,7 +25,6 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
-
 
 cc_library(
     name = "os_wrapper_impl_mock",
@@ -104,7 +103,7 @@ cc_test(
         "//src:daal_safe_application_base_hdrs",
         "@googletest//:gtest",
         "@googletest//:gtest_main",
-            ],
+    ],
 )
 
 #
@@ -215,7 +214,6 @@ cc_library(
     deps = [],
 )
 
-
 #
 cc_test(
     name = "test_application_handler_iterative",
@@ -244,8 +242,8 @@ cc_test(
     ],
     deps = [
         ":os_wrapper_impl_mock",
-        "//src:os_helper_hdrs",
         "//src:daal_os_helper",
+        "//src:os_helper_hdrs",
         "@googletest//:gtest",
         "@googletest//:gtest_main",
     ],
@@ -270,7 +268,6 @@ cc_test(
     ],
 )
 
-
 ##
 cc_test(
     name = "test_daal_sf_exception_crash",
@@ -292,7 +289,6 @@ cc_test(
         "@googletest//:gtest_main",
     ],
 )
-
 
 cc_test(
     name = "test_null_and_periodic_condition_activation_trigger",

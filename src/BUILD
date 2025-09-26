@@ -10,6 +10,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
+
 package(default_visibility = ["//visibility:public"])
 
 ## Config
@@ -65,6 +66,7 @@ cc_library(
         "daal/log/logger_types.hpp",
         "daal/log/sink.hpp",
     ],
+    includes = ["."],
     deps = select({
         "//:dev": [
             ":daal_logger_config_debug",
@@ -75,7 +77,6 @@ cc_library(
     }) + [
         "@fmt",
     ],
-    includes = ["."],
 )
 
 cc_library(
@@ -84,7 +85,7 @@ cc_library(
         "daal/log/logger.cpp",
         "daal/log/sink.cpp",
     ],
-    deps =  [
+    deps = [
         "daal_logger_default_sinks",
         "daal_logger_hdrs",
     ],
@@ -186,7 +187,6 @@ cc_library(
     linkstatic = 1,
 )
 
-
 ### app_handler ###
 
 cc_library(
@@ -253,10 +253,10 @@ cc_library(
     hdrs = [
         "daal/af/worker/worker_thread.hpp",
     ],
+    linkstatic = 1,
     deps = [
         "daal_framework_logger",
     ],
-    linkstatic = 1,
 )
 
 ### checkpoint ###
@@ -268,8 +268,8 @@ cc_library(
         "daal/af/checkpoint/icheckpoint_container.hpp",
         "daal/af/checkpoint/when.hpp",
     ],
-    linkstatic = 1,
     includes = ["."],
+    linkstatic = 1,
 )
 
 cc_library(
@@ -304,8 +304,8 @@ cc_library(
     hdrs = [
         "daal/af/env/execution_environment.hpp",
     ],
-    linkstatic = 1,
     includes = ["."],
+    linkstatic = 1,
 )
 
 cc_library(
@@ -327,12 +327,12 @@ cc_library(
     hdrs = [
         "daal/af/env/details/dummy_exec_env.hpp",
     ],
+    includes = ["."],
     linkstatic = 1,
     deps = [
         "execution_environment_interface",
         "signal_handler",
     ],
-    includes = ["."],
 )
 
 cc_library(
@@ -358,8 +358,8 @@ cc_library(
     ],
     linkstatic = 1,
     deps = [
-        "daal_app_executor"
-    ]
+        "daal_app_executor",
+    ],
 )
 
 cc_library(
@@ -374,9 +374,9 @@ cc_library(
     linkstatic = 1,
     deps = [
         "app_handler_interface",
-        "execution_environment_interface",
         "daal_checkpoint_interface",
         "daal_framework_logger",
+        "execution_environment_interface",
         "os_helper_interface",
         "runtime_statistics",
         "trigger_interface",
@@ -389,8 +389,8 @@ cc_library(
         "daal_app_executor",
         "daal_app_executor_builder",
         "daal_checkpoint",
-        "daal_safe_application_environment",
         "daal_os_helper",
+        "daal_safe_application_environment",
         "daal_trigger",
     ],
 )
@@ -431,7 +431,6 @@ cc_library(
     ],
 )
 
-
 ### runtime_statistics ###
 
 cc_library(
@@ -462,8 +461,8 @@ cc_library(
     features = [
         "libm",
     ],
-    linkstatic = 1,
     includes = ["."],
+    linkstatic = 1,
 )
 
 ### trigger ###
@@ -486,9 +485,11 @@ cc_library(
         "daal/af/trigger/details/trigger_condition_impl.hpp",
         "daal/af/trigger/details/trigger_impl.hpp",
     ],
-    deps = ["trigger_interface",
-            "daal_framework_logger",],
     includes = ["."],
+    deps = [
+        "daal_framework_logger",
+        "trigger_interface",
+    ],
 )
 
 cc_library(
@@ -509,8 +510,8 @@ cc_library(
     ],
     linkstatic = 1,
     deps = [
-        "daal_steady_clock",
         "daal_framework_logger",
+        "daal_steady_clock",
         "trigger_activation_condition_impl_hdrs",
     ],
 )
