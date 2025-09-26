@@ -1,8 +1,50 @@
-# Needed for Dash tool to check python dependency licenses.
-filegroup(
-    name = "cargo_lock",
+## Logging
+
+cc_binary(
+    name = "log_basics",
     srcs = [
-        "Cargo.lock",
+        "log-basics/main.cpp",
     ],
-    visibility = ["//visibility:public"],
+    deps = [
+        "//src:daal_logger",
+    ],
+)
+
+## Application Framework ##
+
+cc_binary(
+    name = "af_hello_world",
+    srcs = [
+        "af-hello-world/hello_world_app.hpp",
+        "af-hello-world/main.cpp",
+    ],
+    deps = [
+        "//src:daal_app_executor_builder",
+        "//src:daal_app_handler_singleshot",
+        "//src:daal_checkpoint",
+        "//src:daal_logger",
+        "//src:daal_os_helper",
+        "//src:daal_trigger",
+        "//src:dummy_execution_environment",
+    ],
+)
+
+cc_library(
+    name = "daal_score_mw_com",
+    srcs = [
+        "daal/af/score/mw_com_common.cpp",
+        "daal/af/score/mw_log_common.cpp",
+    ],
+    hdrs = [
+        "daal/af/score/mw_com_common.hpp",
+        "daal/af/score/mw_log_common.hpp",
+        "daal/af/score/score_exec_env.hpp",
+    ],
+    includes = ["."],
+    deps = [
+        "//src:execution_environment_interface",
+        "@communication//score/mw/com",
+        "@score-baselibs//score/mw/log",
+        "@score-baselibs//score/result",
+    ],
 )

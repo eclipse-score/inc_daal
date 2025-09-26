@@ -10,6 +10,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
+load("@bazel_skylib//rules:common_settings.bzl", "string_flag")
 load("@score_cr_checker//:cr_checker.bzl", "copyright_checker")
 load("@score_dash_license_checker//:dash.bzl", "dash_license_checker")
 load("@score_format_checker//:macros.bzl", "use_format_targets")
@@ -50,3 +51,26 @@ dash_license_checker(
 
 # Add target for formatting checks
 use_format_targets()
+
+# Prod/Dev config
+
+# Prod and dev
+
+string_flag(
+    name = "build_type",
+    build_setting_default = "dev",
+)
+
+config_setting(
+    name = "dev",
+    flag_values = {
+        ":build_type": "dev",
+    },
+)
+
+config_setting(
+    name = "prod",
+    flag_values = {
+        ":build_type": "prod",
+    },
+)
