@@ -96,3 +96,11 @@ git_override(
     # Replace the commit hash (above) with the latest (https://github.com/hedronvision/bazel-compile-commands-extractor/commits/main).
     # Even better, set up Renovate and let it do the work for you (see "Suggestion: Updates" in the README).
 )
+
+# TRLC dependency for requirements traceability
+bazel_dep(name = "trlc", version = "0.0.0")
+git_override(
+    module_name = "trlc",
+    commit = "ede35c4411d41abe42b8f19e78f8989ff79ad3d8",
+    remote = "https://github.com/bmw-software-engineering/trlc.git",
+)
