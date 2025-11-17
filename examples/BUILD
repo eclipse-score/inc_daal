@@ -57,8 +57,8 @@ cc_library(
     visibility = ["//visibility:public"],
     deps = [
         "//src:execution_environment_interface",
-        "@communication//score/mw/com",
-        "@score-baselibs//score/mw/log",
-        "@score-baselibs//score/result",
+        "@score_communication//score/mw/com",
+        "@score_baselibs//score/mw/log",
+        "@score_baselibs//score/result",
     ],
 )
