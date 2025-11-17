@@ -39,8 +39,6 @@ qnx.sdp(
 use_repo(qnx, "toolchains_qnx_sdp")
 use_repo(qnx, "toolchains_qnx_qcc")
 
-
-
 # Add GoogleTest dependency
 bazel_dep(name = "googletest", version = "1.17.0")
 
