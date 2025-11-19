@@ -9,9 +9,9 @@ common --registry=https://raw.githubusercontent.com/eclipse-score/bazel_registry
 common --registry=https://bcr.bazel.build
 
 # for score mw::com integration
-common --@communication//score/mw/com/flags:tracing_library=stub
-common --@score-baselibs//score/mw/log/detail/flags:KUse_Stub_Implementation_Only=False
-common --@score-baselibs//score/mw/log/flags:KRemote_Logging=False
-common --@score-baselibs//score/json:base_library=nlohmann
+common --@score_communication//score/mw/com/flags:tracing_library=stub
+common --@score_baselibs//score/mw/log/detail/flags:KUse_Stub_Implementation_Only=False
+common --@score_baselibs//score/mw/log/flags:KRemote_Logging=False
+common --@score_baselibs//score/json:base_library=nlohmann
 
 build --cxxopt="-Wno-deprecated-declarations"

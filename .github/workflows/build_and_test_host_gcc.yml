@@ -37,6 +37,22 @@ jobs:
       - name: Bazel build daal examples
         run: |
           bazel build //examples/...
+        #- name: Setup QNX License
+        #  env:
+        #    SCORE_QNX_LICENSE: ${{ secrets.SCORE_QNX_LICENSE }}
+        #  run: |
+        #    mkdir -p /opt/score_qnx/license
+        #    echo "${SCORE_QNX_LICENSE}" | base64 --decode > /opt/score_qnx/license/licenses
+        #- name: Bazel build scrample with qnx toolchain
+        #  env:
+        #    SCORE_QNX_USER: ${{ secrets.SCORE_QNX_USER }}
+        #    SCORE_QNX_PASSWORD: ${{ secrets.SCORE_QNX_PASSWORD }}
+        #  run: |
+        #    bazel build --config x86_64-qnx --credential_helper=*.qnx.com=${{ github.workspace }}/.github/tools/qnx_credential_helper.py -- \
+        #    //src/...
+        #- name: Cleanup QNX License
+        #  if: always()
+        #  run: rm -rf /opt/score_qnx
     #- name: Bazel test daal targets
     #  run: |
     #    bazel test //tests/...
