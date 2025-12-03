@@ -12,7 +12,10 @@
 name: "CodeQL Advanced"
 
 on:
-  workflow_dispatch:
+  pull_request:
+    types: [opened, reopened, synchronize]
+  merge_group:
+    types: [checks_requested]
 
 jobs:
   analyze:
