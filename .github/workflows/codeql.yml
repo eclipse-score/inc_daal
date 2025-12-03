@@ -24,3 +24,8 @@ jobs:
       build-script: |
           bazel build //src/...
           bazel build //examples/...
+    permissions:
+      security-events: write
+      packages: read
+      actions: read
+      contents: read
