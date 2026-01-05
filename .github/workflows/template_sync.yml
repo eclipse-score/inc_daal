@@ -3,9 +3,9 @@ name: Sync with template
 on:
   # cronjob trigger
   schedule:
-  - cron: "0 0 1 * *"
+    - cron: "0 0 1 * *"
   # manual trigger
-  workflow_dispatch:# Behalte dies, um den Workflow manuell auslösen zu können
+  workflow_dispatch:
 
 jobs:
   repo-sync:
