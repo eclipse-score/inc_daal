@@ -25,7 +25,6 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-      metadata: read
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
