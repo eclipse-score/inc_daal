@@ -38,3 +38,4 @@ jobs:
           upstream_branch: "main"
           pr_title: "[Template Sync] Upstream template update"
           pr_commit_msg: "chore(template): upstream template update"
+          template_sync_ignore_file_path: ".github/**"
