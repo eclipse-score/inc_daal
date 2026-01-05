@@ -1,5 +1,17 @@
-name: Sync with template
+# *******************************************************************************
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
 
+name: Sync with template
 on:
   schedule:
     - cron: "0 0 1 * *"
@@ -21,7 +33,7 @@ jobs:
       - name: Sync Template Changes
         uses: AndreasAugustin/actions-template-sync@v1.1.8
         with:
-          github_token: ${{ secrets.SCORE_BOT_PAT}}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           source_repo_path: "eclipse-score/module_template"
           upstream_branch: "main"
           pr_title: "[Template Sync] Upstream template update"
