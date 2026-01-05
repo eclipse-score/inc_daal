@@ -25,15 +25,16 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-      workflows: write
+      metadata: read
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
       - name: Sync Template Changes
-        uses: AndreasAugustin/actions-template-sync@v1.1.8
+        uses: AndreasAugustin/actions-template-sync@v2.5.2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          source_gh_token: ${{ secrets.GITHUB_TOKEN }}
+          target_gh_token: ${{ secrets.GITHUB_TOKEN }}
           source_repo_path: "eclipse-score/module_template"
           upstream_branch: "main"
           pr_title: "[Template Sync] Upstream template update"
