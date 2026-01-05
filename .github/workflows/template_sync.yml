@@ -1,0 +1,28 @@
+name: Sync with template
+
+on:
+  # cronjob trigger
+  schedule:
+  - cron: "0 0 1 * *"
+  # manual trigger
+  workflow_dispatch:# Behalte dies, um den Workflow manuell auslösen zu können
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Sync Template Changes
+        uses: AndreasAugustin/actions-template-sync@v1.1.8
+        with:
+          source_gh_token: ${{ secrets.SCORE_BOT_CLASSIC_PAT }}
+          target_gh_token: ${{ secrets.SCORE_BOT_CLASSIC_PAT }}
+          source_repo_path: "eclipse-score/module_template"
+          upstream_branch: "main"
+          pr_title: "[Template Sync] Upstream template update"
+          pr_commit_msg: "chore(template): upstream template update"
