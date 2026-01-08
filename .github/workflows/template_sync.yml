@@ -26,8 +26,6 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      steps:
-      # To use this repository's private action, you must check out the repository
       - name: Checkout
         uses: actions/checkout@v4
         with:
