@@ -26,7 +26,13 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-
+      steps:
+      # To use this repository's private action, you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: false  # needed see #557 and #627
       - name: Sync Template Changes
         uses: AndreasAugustin/actions-template-sync@v2.5.2
         with:
