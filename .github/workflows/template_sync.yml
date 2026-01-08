@@ -26,8 +26,6 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
 
       - name: Sync Template Changes
         uses: AndreasAugustin/actions-template-sync@v2.5.2
