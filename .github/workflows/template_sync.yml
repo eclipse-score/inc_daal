@@ -34,8 +34,8 @@ jobs:
       - name: Sync Template Changes
         uses: AndreasAugustin/actions-template-sync@v2.5.2
         with:
-          source_gh_token: ${{ secrets.SCORE_BOT_PAT }}
-          target_gh_token: ${{ secrets.GITHUB_TOKEN }}
+          source_gh_token: ${{ secrets.SCORE_BOT_CLASSIC_PAT }}
+          target_gh_token: ${{ secrets.SCORE_BOT_CLASSIC_PAT}}
           source_repo_path: "eclipse-score/module_template"
           upstream_branch: "main"
           pr_title: "[Template Sync] Upstream template update"
