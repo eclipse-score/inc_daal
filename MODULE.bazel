@@ -57,7 +57,11 @@ bazel_dep(name = "rules_cc", version = "0.2.1")
 # LLVM Toolchains Rules - host configuration
 bazel_dep(name = "toolchains_llvm", version = "1.2.0", dev_dependency = True)
 
-llvm = use_extension("@toolchains_llvm//toolchain/extensions:llvm.bzl", "llvm", dev_dependency = True)
+llvm = use_extension(
+    "@toolchains_llvm//toolchain/extensions:llvm.bzl",
+    "llvm",
+    dev_dependency = True,
+)
 llvm.toolchain(
     cxx_standard = {"": "c++17"},
     llvm_version = "19.1.0",
@@ -65,7 +69,10 @@ llvm.toolchain(
 use_repo(llvm, "llvm_toolchain")
 use_repo(llvm, "llvm_toolchain_llvm")
 
-register_toolchains("@llvm_toolchain//:all", dev_dependency = True)
+register_toolchains(
+    "@llvm_toolchain//:all",
+    dev_dependency = True,
+)
 
 # Dash license checker
 bazel_dep(name = "score_dash_license_checker", version = "0.1.2")
