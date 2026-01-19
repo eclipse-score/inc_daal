@@ -40,3 +40,5 @@ jobs:
           upstream_branch: "main"
           pr_title: "[Template Sync] Upstream template update"
           pr_commit_msg: "chore(template): upstream template update"
+          git_user_name: eclipse-score-bot
+          git_user_email: 187756813+eclipse-score-bot@users.noreply.github.com
