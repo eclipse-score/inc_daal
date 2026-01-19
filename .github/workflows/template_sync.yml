@@ -42,3 +42,4 @@ jobs:
           pr_commit_msg: "chore(template): upstream template update"
           git_user_name: eclipse-score-bot
           git_user_email: 187756813+eclipse-score-bot@users.noreply.github.com
+          template_sync_ignore_file_path: ".github/.templatesyncignore"
