@@ -1,8 +1,7 @@
-**/Module.bazel
 .DS_Store
 .bazelversion
 .gitignore
-**/BUILD
+BUILD
 src/
 tests/
 examples/
@@ -10,3 +9,7 @@ docs/
 README.md
 project_config.bzl
 CODEOWNERS
+.bazelrc
+WORKSPACE
+MODULE.bazel
+.github/.templatesyncignore
