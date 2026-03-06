@@ -1,0 +1,44 @@
+# *******************************************************************************
+# Copyright (c) 2025 Contributors to the Eclipse Foundation
+#
+# See the NOTICE file(s) distributed with this work for additional
+# information regarding copyright ownership.
+#
+# This program and the accompanying materials are made available under the
+# terms of the Apache License Version 2.0 which is available at
+# https://www.apache.org/licenses/LICENSE-2.0
+#
+# SPDX-License-Identifier: Apache-2.0
+# *******************************************************************************
+
+name: Sync with template
+on:
+  schedule:
+    - cron: "0 0 1 * *"
+  workflow_dispatch:
+
+jobs:
+  repo-sync:
+    if: github.repository != 'eclipse-score/module_template'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: false # needed see #557 and #627
+      - name: Sync Template Changes
+        uses: AndreasAugustin/actions-template-sync@v2.5.2
+        with:
+          source_gh_token: ${{ secrets.SCORE_APPROVALS_PAT }}
+          target_gh_token: ${{ secrets.SCORE_APPROVALS_PAT}}
+          source_repo_path: "eclipse-score/module_template"
+          upstream_branch: "main"
+          pr_title: "[Template Sync] Upstream template update"
+          pr_commit_msg: "chore(template): upstream template update"
+          git_user_name: eclipse-score-bot
+          git_user_email: 187756813+eclipse-score-bot@users.noreply.github.com
+          template_sync_ignore_file_path: ".github/.templatesyncignore"
