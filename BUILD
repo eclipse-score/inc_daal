@@ -10,23 +10,14 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-load("@bazel_skylib//rules:common_settings.bzl", "string_flag")
-load("@score_cr_checker//:cr_checker.bzl", "copyright_checker")
-load("@score_dash_license_checker//:dash.bzl", "dash_license_checker")
-load("@score_format_checker//:macros.bzl", "use_format_targets")
-load("@score_python_basics//:defs.bzl", "score_virtualenv")
-load("@score_starpls_lsp//:starpls.bzl", "setup_starpls")
+
+load("@score_docs_as_code//:docs.bzl", "docs")
+load("@score_tooling//:defs.bzl", "copyright_checker", "dash_license_checker", "setup_starpls", "use_format_targets")
 load("//:project_config.bzl", "PROJECT_CONFIG")
 
 setup_starpls(
     name = "starpls_server",
     visibility = ["//visibility:public"],
-)
-
-score_virtualenv(
-    name = "ide_support",
-    reqs = [],
-    venv_name = ".venv",
 )
 
 copyright_checker(
@@ -37,8 +28,8 @@ copyright_checker(
         "//:BUILD",
         "//:MODULE.bazel",
     ],
-    config = "@score_cr_checker//resources:config",
-    template = "@score_cr_checker//resources:templates",
+    config = "@score_tooling//cr_checker/resources:config",
+    template = "@score_tooling//cr_checker/resources:templates",
     visibility = ["//visibility:public"],
 )
 
@@ -52,25 +43,6 @@ dash_license_checker(
 # Add target for formatting checks
 use_format_targets()
 
-# Prod/Dev config
-
-# Prod and dev
-
-string_flag(
-    name = "build_type",
-    build_setting_default = "dev",
-)
-
-config_setting(
-    name = "dev",
-    flag_values = {
-        ":build_type": "dev",
-    },
-)
-
-config_setting(
-    name = "prod",
-    flag_values = {
-        ":build_type": "prod",
-    },
+docs(
+    source_dir = "docs",
 )
