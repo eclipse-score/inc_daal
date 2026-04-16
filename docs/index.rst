@@ -34,6 +34,7 @@ Requirements
    :id: stkh_req__docgen_enabled__example
    :status: valid
    :safety: QM
+   :security: NO-SECURITY-CONCERN
    :reqtype: Functional
    :rationale: Ensure documentation builds are possible for all modules
 

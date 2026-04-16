@@ -13,20 +13,14 @@
 load("@bazel_skylib//rules:common_settings.bzl", "string_flag")
 load("@score_cr_checker//:cr_checker.bzl", "copyright_checker")
 load("@score_dash_license_checker//:dash.bzl", "dash_license_checker")
+load("@score_docs_as_code//:docs.bzl", "docs")
 load("@score_format_checker//:macros.bzl", "use_format_targets")
-load("@score_python_basics//:defs.bzl", "score_virtualenv")
 load("@score_starpls_lsp//:starpls.bzl", "setup_starpls")
 load("//:project_config.bzl", "PROJECT_CONFIG")
 
 setup_starpls(
     name = "starpls_server",
     visibility = ["//visibility:public"],
-)
-
-score_virtualenv(
-    name = "ide_support",
-    reqs = [],
-    venv_name = ".venv",
 )
 
 copyright_checker(
@@ -51,6 +45,11 @@ dash_license_checker(
 
 # Add target for formatting checks
 use_format_targets()
+
+# Docs target used by CI workflow (`bazel run //:docs ...`).
+docs(
+    source_dir = "docs",
+)
 
 # Prod/Dev config
 

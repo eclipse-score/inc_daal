@@ -58,6 +58,25 @@ artifacts of the module.
 bazel test //tests/...
 ```
 
+### 4️⃣ Scan for leaked secrets
+
+To run a local default scan (same mode as CI):
+
+```sh
+docker run --rm -v "$(pwd):/repo" ghcr.io/gitleaks/gitleaks:latest \
+	dir --verbose --redact --config=/repo/.gitleaks.toml /repo
+```
+
+A default GitHub Actions workflow also runs the same scan on pull requests,
+merge queues, and pushes to `main`.
+
+Optional full-history scan (for maintainers with history-rewrite permission):
+
+```sh
+docker run --rm -v "$(pwd):/repo" ghcr.io/gitleaks/gitleaks:latest \
+	git --verbose --redact --config=/repo/.gitleaks.toml --log-opts="--all" /repo
+```
+
 ## 📖 Documentation
 
 - A **centralized docs structure** is planned.
