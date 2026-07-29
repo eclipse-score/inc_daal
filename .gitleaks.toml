@@ -1,0 +1,10 @@
+title = "inc_daal gitleaks configuration"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "forbidden-swf-link"
+description = "Forbidden SWF URLs/domains are not allowed in sources"
+regex = '''(?i)(issue\.swf\.i\.mercedes-benz\.com|https?://[^\s"')]*\.swf(?:[/?#]|$))'''
+tags = ["policy", "forbidden-link"]

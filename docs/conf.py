@@ -23,6 +23,7 @@
 project = "Module Template Project"
 author = "S-CORE"
 version = "0.1"
+project_url = "https://github.com/eclipse-score/inc_daal"
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration

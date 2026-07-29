@@ -13,3 +13,6 @@
 # /docs/verification        @eclipse-score/<module_name>/quality-manager @eclipse-score/<module_name>/safety-manager
 # /components               @eclipse-score/<module_name>/technical-lead
 # /components/*/            @eclipse-score/<module_name>/automotive-score-committers
+
+# Default reviewers.
+*                                     @FScholPer @thilo-schmitt @alexmohr @theswiftfox @MarkSchmitt

@@ -85,12 +85,6 @@ TEST_F(PosixHelper, IsFpuWorking) {
   EXPECT_TRUE(test_obj.IsFpuWorking(0.00001f));
 }
 
-/*!
- * \brief Normal expected flow for the DropPrivileges where set and get limits
- * are valid
- * TODO: https://issue.swf.i.mercedes-benz.com/browse/ADASDAI-161969 should fix
- * it
- */
 TEST_F(PosixHelper, dropPrivilegesValidReturns) {
   daal::af::os::RLimit get_limits{0, 0};
 
@@ -108,11 +102,6 @@ TEST_F(PosixHelper, dropPrivilegesValidReturns) {
   EXPECT_TRUE(test_obj.DropPrivileges());
 }
 
-/*!
- * \brief Test for the failure of the setrlimit in system call
- * TODO: https://issue.swf.i.mercedes-benz.com/browse/ADASDAI-161969 should fix
- * it
- */
 TEST_F(PosixHelper, dropPrivilegesInValidSet) {
   EXPECT_CALL(*fake, SetRLimit(testing::_, testing::_))
       .Times(3)
@@ -123,11 +112,6 @@ TEST_F(PosixHelper, dropPrivilegesInValidSet) {
   EXPECT_FALSE(test_obj.DropPrivileges());
 }
 
-/*!
- * \brief Test for the failure of the getrlimit in system call
- * TODO: https://issue.swf.i.mercedes-benz.com/browse/ADASDAI-161969 should fix
- * it
- */
 TEST_F(PosixHelper, dropPrivilegesInValidGetReturn) {
   daal::af::os::RLimit get_limits{100, 100};
 

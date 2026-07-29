@@ -1,5 +1,5 @@
 [tool.basedpyright]
-extends = "bazel-bin/ide_support.runfiles/score_python_basics~/pyproject.toml"
+extends = "bazel-bin/ide_support.runfiles/score_tooling+/python_basics/pyproject.toml"
 verboseOutput = true
 
 exclude = [
