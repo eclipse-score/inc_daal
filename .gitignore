@@ -41,7 +41,7 @@ user.bazelrc
 .ruff_cache
 
 # docs:incremental and docs:ide_support build artifacts
-/_build
+_build
 
 # Vale - editorial style guide
 .vale.ini
@@ -57,3 +57,4 @@ __pycache__/
 
 .clwb/
 **/.DS_Store
+ubproject.toml
