@@ -10,22 +10,18 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-
-name: Gitlint check
+name: pre-commit
 on:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, reopened, synchronize]
 jobs:
-  lint-commits:
-    name: check-commit-messages
+  self_test:
+    name: 🔬 Self Test
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Run Gitlint Action
-        if: ${{ github.event_name == 'pull_request' }}
-        uses: ./.github/actions/gitlint
-        with:
-          pr-number: ${{ github.event.number }}
+      - name: 📥 Check out
+        uses: actions/checkout@v6
+      - name: 🛠️ Install pre-commit
+        run: pip install pre-commit
+      - name: ✅ Run pre-commit
+        run: pre-commit run --all-files

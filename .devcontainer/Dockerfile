@@ -11,21 +11,5 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-name: Gitlint check
-on:
-  pull_request:
-    types: [opened, synchronize, reopened]
-jobs:
-  lint-commits:
-    name: check-commit-messages
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-      - name: Run Gitlint Action
-        if: ${{ github.event_name == 'pull_request' }}
-        uses: ./.github/actions/gitlint
-        with:
-          pr-number: ${{ github.event.number }}
+# Use Dockerfile to get dependabot version bumps after new image is released
+FROM ghcr.io/eclipse-score/devcontainer:v1.5.0
