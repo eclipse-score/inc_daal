@@ -11,12 +11,17 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-[tool.basedpyright]
-extends = "bazel-bin/ide_support.runfiles/score_tooling+/python_basics/pyproject.toml"
-verboseOutput = true
+name: Daily
 
-exclude = [
-    "**/__pycache__",
-    "**/.*",
-    "**/bazel-*",
-]
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs every day at midnight UTC
+
+jobs:
+  docs-cleanup:
+    uses: eclipse-score/cicd-workflows/.github/workflows/daily.yml@dfc6ffae7b8db630dbf49865314df6c46802d385 # v2026-06-10
