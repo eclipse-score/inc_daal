@@ -11,12 +11,24 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-[tool.basedpyright]
-extends = "bazel-bin/ide_support.runfiles/score_tooling+/python_basics/pyproject.toml"
-verboseOutput = true
+name: On PR
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+  merge_group:
+    types: [checks_requested]
 
-exclude = [
-    "**/__pycache__",
-    "**/.*",
-    "**/bazel-*",
-]
+permissions:
+  contents: read
+
+jobs:
+  pre-commit:
+    name: 🔬 Pre-Commit
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Check out
+        uses: actions/checkout@v7
+      - name: 🛠️ Install pre-commit
+        run: pip install pre-commit rapidfuzz
+      - name: ✅ Run pre-commit
+        run: pre-commit run --all-files

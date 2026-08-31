@@ -1,5 +1,5 @@
 # *******************************************************************************
-# Copyright (c) 2025 Contributors to the Eclipse Foundation
+# Copyright (c) 2026 Contributors to the Eclipse Foundation
 #
 # See the NOTICE file(s) distributed with this work for additional
 # information regarding copyright ownership.
@@ -30,7 +30,7 @@ on:
 
 jobs:
   build-docs:
-    uses: eclipse-score/cicd-workflows/.github/workflows/docs.yml@c1c90b1a82a1fab0fc202979dde6686b2162d5a8 # v0.0.0
+    uses: eclipse-score/cicd-workflows/.github/workflows/docs.yml@93aac16ada7d247bbb6ae926509ddea74cf5213a # v0.0.2
     permissions:
       contents: write
       pages: write
@@ -39,5 +39,5 @@ jobs:
 
     with:
       # the bazel-target depends on your repo specific docs_targets configuration (e.g. "suffix")
-      bazel-target: "//:docs -- --github_user=${{ github.repository_owner }} --github_repo=${{ github.event.repository.name }}"
+      bazel-target: "--lockfile_mode=error //:docs -- --github_user=${{ github.repository_owner }} --github_repo=${{ github.event.repository.name }}"
       retention-days: 3
