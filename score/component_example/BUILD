@@ -11,12 +11,24 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-[tool.basedpyright]
-extends = "bazel-bin/ide_support.runfiles/score_tooling+/python_basics/pyproject.toml"
-verboseOutput = true
+load("@score_docs_as_code//:docs.bzl", "docs_bundle")
 
-exclude = [
-    "**/__pycache__",
-    "**/.*",
-    "**/bazel-*",
-]
+filegroup(
+    name = "all_sources",
+    srcs = glob(
+        [
+            "src/**/*.cpp",
+            "src/**/*.hpp",
+        ],
+        allow_empty = True,
+    ),
+)
+
+docs_bundle(
+    name = "docs",
+    scan_code = [
+        ":all_sources",
+    ],
+    source_dir = "docs",
+    visibility = ["//visibility:public"],
+)

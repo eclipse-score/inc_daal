@@ -11,12 +11,20 @@
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
 
-[tool.basedpyright]
-extends = "bazel-bin/ide_support.runfiles/score_tooling+/python_basics/pyproject.toml"
-verboseOutput = true
+name: On PR Target
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize]
 
-exclude = [
-    "**/__pycache__",
-    "**/.*",
-    "**/bazel-*",
-]
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  license-check:
+    uses: eclipse-score/cicd-workflows/.github/workflows/license-check.yml@8d80e8df150cae21d53cbc8031d0f970648f7a67 # v0.0.3
+    with:
+      repo-url: "${{ github.server_url }}/${{ github.repository }}"
+      bazel-target: "run --lockfile_mode=error //:license-check"
+    secrets:
+      dash-api-token: ${{ secrets.ECLIPSE_GITLAB_API_TOKEN }}
