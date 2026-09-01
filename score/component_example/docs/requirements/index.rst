@@ -12,14 +12,10 @@
    # SPDX-License-Identifier: Apache-2.0
    # *******************************************************************************
 
-# GitHub CODEOWNERS file is a simple way to automate review system on github,
-# by automatically assigning owners to a pull request based on which files
-# were modified. All directories should have a proper codeowner
-# Syntax: https://help.github.com/articles/about-codeowners/
+[Component Name] Requirements
+=============================
 
-# Note: last match wins
+.. toctree::
 
-# default owners
-# @eclipse-score/community-process
-# interim solution:
-* @pahmann @masc2023 @aschemmel-tech @PandaeDo @RolandJentschETAS
+   requirements
+   chklst_req_inspection
