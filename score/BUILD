@@ -10,13 +10,3 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
-
-[tool.basedpyright]
-extends = "bazel-bin/ide_support.runfiles/score_tooling+/python_basics/pyproject.toml"
-verboseOutput = true
-
-exclude = [
-    "**/__pycache__",
-    "**/.*",
-    "**/bazel-*",
-]
