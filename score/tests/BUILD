@@ -10,13 +10,21 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 # *******************************************************************************
+load("@rules_cc//cc:defs.bzl", "cc_test")
+load("@rules_rust//rust:defs.bzl", "rust_test")
 
-[tool.basedpyright]
-extends = "bazel-bin/ide_support.runfiles/score_tooling+/python_basics/pyproject.toml"
-verboseOutput = true
+rust_test(
+    name = "feature_integration_tests_rust",
+    size = "small",
+    srcs = ["test_main.rs"],
+)
 
-exclude = [
-    "**/__pycache__",
-    "**/.*",
-    "**/bazel-*",
-]
+cc_test(
+    name = "feature_integration_tests_cpp",
+    size = "small",
+    srcs = ["test_main.cpp"],
+    deps = [
+        "//score/component_example",
+        "@googletest//:gtest_main",  # GoogleTest dependency via Bazel Modules
+    ],
+)
