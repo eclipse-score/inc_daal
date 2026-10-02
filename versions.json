@@ -62,5 +62,9 @@
   {
     "version": "pr-38",
     "url": "https://eclipse-score.github.io/inc_daal/pr-38/"
+  },
+  {
+    "version": "pr-39",
+    "url": "https://eclipse-score.github.io/inc_daal/pr-39/"
   }
 ]
