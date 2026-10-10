@@ -1,18 +1,25 @@
-# Comment out as not in score yet
-# *                                  @eclipse-score/infrastructure-tooling-community
-# .*                                 @eclipse-score/infrastructure-tooling-community
-# .github/CODEOWNERS                 @eclipse-score/technical-lead
+..
+   # *******************************************************************************
+   # Copyright (c) 2026 Contributors to the Eclipse Foundation
+   #
+   # See the NOTICE file(s) distributed with this work for additional
+   # information regarding copyright ownership.
+   #
+   # This program and the accompanying materials are made available under the
+   # terms of the Apache License Version 2.0 which is available at
+   # https://www.apache.org/licenses/LICENSE-2.0
+   #
+   # SPDX-License-Identifier: Apache-2.0
+   # *******************************************************************************
 
-# in separate <module_name> repositories:
-#
-# /docs                     @eclipse-score/process-community
-# /docs/manual              @eclipse-score/<module_name>/safety-manager
-# /docs/release             @eclipse-score/<module_name>/quality-manager @eclipse-score/<module_name>/module-lead
-# /docs/safety_plan         @eclipse-score/<module_name>/safety-manager @eclipse-score/<module_name>/module-lead
-# /docs/safety_analysis     @eclipse-score/<module_name>/safety-manager
-# /docs/verification        @eclipse-score/<module_name>/quality-manager @eclipse-score/<module_name>/safety-manager
-# /components               @eclipse-score/<module_name>/technical-lead
-# /components/*/            @eclipse-score/<module_name>/automotive-score-committers
+# GitHub CODEOWNERS file is a simple way to automate review system on github,
+# by automatically assigning owners to a pull request based on which files
+# were modified. All directories should have a proper codeowner
+# Syntax: https://help.github.com/articles/about-codeowners/
 
-# Default reviewers.
-*                                     @FScholPer @thilo-schmitt @alexmohr @theswiftfox @MarkSchmitt
+# Note: last match wins
+
+# default owners
+# @eclipse-score/community-process
+# interim solution:
+* @pahmann @masc2023 @aschemmel-tech @PandaeDo @RolandJentschETAS
