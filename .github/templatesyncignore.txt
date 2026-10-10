@@ -1,0 +1,12 @@
+**/Module.bazel
+.DS_Store
+.bazelversion
+.gitignore
+**/BUILD
+src/
+tests/
+examples/
+docs/
+README.md
+project_config.bzl
+CODEOWNERS
