@@ -21,7 +21,6 @@ python.toolchain(
     is_default = True,
     python_version = PYTHON_VERSION,
 )
-use_repo(python)
 
 # Configure the target toolchain.
 bazel_dep(name = "score_toolchains_qnx", version = "0.0.2", dev_dependency = True)
