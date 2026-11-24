@@ -1,5 +1,5 @@
 # *******************************************************************************
-# Copyright (c) 2024 Contributors to the Eclipse Foundation
+# Copyright (c) 2026 Contributors to the Eclipse Foundation
 #
 # See the NOTICE file(s) distributed with this work for additional
 # information regarding copyright ownership.
@@ -23,7 +23,7 @@ inputs:
     required: false
 runs:
   using: "docker"
-  image: "jorisroovers/gitlint:0.19.1"
+  image: "docker://jorisroovers/gitlint:0.19.1"
   entrypoint: /bin/sh
   args:
     - -c
